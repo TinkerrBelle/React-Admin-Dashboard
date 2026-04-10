@@ -1,0 +1,16 @@
+.appShell {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    min-height: 100vh;
+}
+
+.mainArea {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.pageContent {
+    padding: 2rem;
+    flex: 1;
+}

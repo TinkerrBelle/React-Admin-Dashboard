@@ -1,0 +1,96 @@
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0.5rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+.brandIcon {
+    font-size: 22px;
+    color: var(--accent);
+}
+
+.brandName {
+    color: var(--sidebar-active);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--sidebar-text);
+    text-decoration: none;
+    font-size: 14px;
+    transition: background 0.15s, color 0.15s;
+}
+
+.navLink:hover {
+    background-color: var(--sidebar-active-bg);
+    color: var(--sidebar-active);
+}
+
+.navIcon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.userArea {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: var(--sidebar-active-bg);
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.userName {
+    color: var(--sidebar-active);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.userRole {
+    color: var(--sidebar-text);
+    font-size: 11px;
+}
