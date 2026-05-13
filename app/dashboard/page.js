@@ -5,6 +5,8 @@ import styles from '../../styles/dashboard.module.css'
 import StatCard from '../../components/StatCard'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import UserTable from '../../components/UserTable'
+import SearchBar from '../../components/SearchBar'
+
 
 export default function DashboardPage() {
 
@@ -13,6 +15,11 @@ export default function DashboardPage() {
     // 2. loading — starts as true, will become false when data arrives
     const [users, setUsers] = useState([])
     const [loading, setLoading] = useState(true)
+
+    // New state — tracks what the user has typed in the search box
+    // Starts as empty string because nothing is typed yet
+    const [searchTerm, setSearchTerm] = useState('')
+
 
     // useEffect — runs once after the component loads on screen
     // The [] at the end means "only run this once, not on every render"
@@ -42,6 +49,21 @@ export default function DashboardPage() {
     const activeUsers = users.filter(u => u.id % 2 === 0).length
     const totalOrders = users.length * 8
     const revenue = users.length * 1240
+
+    // Derived state — we never store this in useState
+    // Every time React re-renders, this recalculates fresh
+    // from the current users array and the current searchTerm
+    const filteredUsers = users.filter(user => {
+        // Convert everything to lowercase so search is not case sensitive
+        // "john" matches "John", "JOHN", "jOhN" — all the same
+        const term = searchTerm.toLowerCase()
+
+        return (
+            user.name.toLowerCase().includes(term) ||
+            user.email.toLowerCase().includes(term) ||
+            user.company.name.toLowerCase().includes(term)
+        )
+    })
 
     return (
         <div className={styles.dashboard}>
@@ -80,8 +102,18 @@ export default function DashboardPage() {
                 />
             </div>
 
-            {/*UserTable*/}
-            <UserTable users={users} />
+            {/* SearchBar sits between the cards and the table */}
+            {/* We pass searchTerm so it knows what to display */}
+            {/* We pass setSearchTerm as onSearch so it can update our state */}
+            <SearchBar
+                searchTerm={searchTerm}
+                onSearch={setSearchTerm}
+            />
+
+            {/* We pass filteredUsers instead of users */}
+            {/* UserTable doesn't know or care that it's filtered */}
+            {/* It just renders whatever array it receives */}
+            <UserTable users={filteredUsers} searchTerm={searchTerm} />
         </div>
     )
 }

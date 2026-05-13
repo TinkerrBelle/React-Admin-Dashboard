@@ -14,3 +14,26 @@
     padding: 2rem;
     flex: 1;
 }
+
+.overlay {
+    display: none;
+}
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    .appShell {
+        grid-template-columns: 1fr;
+    }
+
+    .overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 20;
+    }
+
+    .pageContent {
+        padding: 1rem;
+    }
+}

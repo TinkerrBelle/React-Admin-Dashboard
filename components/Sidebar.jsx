@@ -9,9 +9,10 @@ const navItems = [
     { label: 'Settings',  href: '/settings',  icon: '⚙' },
 ]
 
-export default function Sidebar() {
+// We now receive isOpen and onClose as props from LayoutShell
+export default function Sidebar({ isOpen, onClose }) {
     return (
-        <aside className={styles.sidebar}>
+        <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
             <div className={styles.brand}>
                 <span className={styles.brandIcon}>◈</span>
                 <span className={styles.brandName}>AdminPro</span>
@@ -21,7 +22,13 @@ export default function Sidebar() {
                 <ul className={styles.navList}>
                     {navItems.map((item) => (
                         <li key={item.href}>
-                            <Link href={item.href} className={styles.navLink}>
+                            {/* onClose is called when any link is clicked */}
+                            {/* This closes the sidebar on mobile after navigation */}
+                            <Link
+                                href={item.href}
+                                className={styles.navLink}
+                                onClick={onClose}
+                            >
                                 <span className={styles.navIcon}>{item.icon}</span>
                                 <span>{item.label}</span>
                             </Link>
