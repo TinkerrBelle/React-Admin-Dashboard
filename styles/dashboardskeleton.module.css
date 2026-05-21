@@ -1,0 +1,93 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.skeletonCard {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.skeletonTable {
+    background-color: var(--bg-white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.tableHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.tableRow {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.tableRow:last-child {
+    border-bottom: none;
+}
+
+.nameCell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 30%;
+    flex-shrink: 0;
+}
+
+.nameCellText {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+/* The pulsing animation */
+.skeletonBox {
+    background-color: var(--border);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+}

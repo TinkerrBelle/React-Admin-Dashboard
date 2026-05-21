@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react'
 import styles from '../../styles/dashboard.module.css'
 import StatCard from '../../components/StatCard'
-import LoadingSpinner from '../../components/LoadingSpinner'
+// import LoadingSpinner from '../../components/LoadingSpinner'
 import UserTable from '../../components/UserTable'
 import SearchBar from '../../components/SearchBar'
+import DashboardSkeleton from '../../components/DashboardSkeleton'
 
 
 export default function DashboardPage() {
@@ -40,7 +41,8 @@ export default function DashboardPage() {
     // The moment setLoading(false) is called above, React re-renders
     // and shows the real content below instead
     if (loading) {
-        return <LoadingSpinner />
+        // return <LoadingSpinner />
+        return <DashboardSkeleton />
     }
 
     // Stats we calculate from the real API data
